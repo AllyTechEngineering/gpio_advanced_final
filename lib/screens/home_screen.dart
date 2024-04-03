@@ -18,12 +18,20 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('GPIO Advanced'),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('GPIO Advanced Controls'),
+            const Text('GPIO Advanced Controls'),
+            const SizedBox(
+              height: 20.0,
+            ),
+            getElevatedButtonLedOn(),
+            const SizedBox(
+              height: 20.0,
+            ),
+            getElevatedButtonLedOff(),
           ],
         ),
       ),
@@ -41,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-    Widget getElevatedButtonLedOff() {
+  Widget getElevatedButtonLedOff() {
     return ElevatedButton(
       onPressed: () {
         setState(() {
