@@ -1,4 +1,5 @@
 import 'package:dart_periphery/dart_periphery.dart';
+import 'package:flutter/foundation.dart';
 
 // How to use GPIOconfig
 /*
@@ -40,13 +41,17 @@ GPIOdrive.gpioDriveOpenSource
 */
 
 class GpioAdvanced {
-  var config = GPIOconfig(GPIOdirection.gpioDirOut, GPIOedge.gpioEdgeNone,
-      GPIObias.gpioBiasDefault, GPIOdrive.gpioDriveDefault, false, 'GPIO_16');
   // ignore: prefer_typing_uninitialized_variables
-  var gpio16;
+  static var gpio16;
+
+  void initGpio16Output() {
+    var config = GPIOconfig(GPIOdirection.gpioDirOut, GPIOedge.gpioEdgeNone,
+        GPIObias.gpioBiasDefault, GPIOdrive.gpioDriveDefault, false, '16');
+    gpio16 = GPIO.advanced(16, config);
+  }
 
   void getGpio16Output(bool outputValue) {
-    gpio16 = GPIO.advanced(16, config);
+    debugPrint('outputValue: $outputValue');
     gpio16.write(outputValue);
   }
 

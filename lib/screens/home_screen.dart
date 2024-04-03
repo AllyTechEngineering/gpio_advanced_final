@@ -10,6 +10,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GpioAdvanced gpioAdvanced = GpioAdvanced();
+  @override
+  void initState() {
+    gpioAdvanced.initGpio16Output();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    gpioAdvanced.disposeGpio16();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
           gpioAdvanced.getGpio16Output(false);
         });
       },
-      child: const Text('GPIO16 High Led Off'),
+      child: const Text('GPIO16 Low Led Off'),
     );
   }
 }
