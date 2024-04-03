@@ -42,10 +42,15 @@ GPIOdrive.gpioDriveOpenSource
 class GpioAdvanced {
   var config = GPIOconfig(GPIOdirection.gpioDirOut, GPIOedge.gpioEdgeNone,
       GPIObias.gpioBiasDefault, GPIOdrive.gpioDriveDefault, false, 'GPIO_16');
+  // ignore: prefer_typing_uninitialized_variables
+  var gpio16;
 
   void getGpio16Output(bool outputValue) {
-    var gpio_16 = GPIO.advanced(16, config);
-    gpio_16.write(outputValue);
+    gpio16 = GPIO.advanced(16, config);
+    gpio16.write(outputValue);
   }
-  
+
+  void disposeGpio16() {
+    gpio16.dispose();
+  }
 }
